@@ -3,60 +3,35 @@
 import sys
 from pathlib import Path
 
-# Add project root to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
 from utils import read_input
 from solution import part1, part2
 
 
-def test_part1_example1():
+def test_part1():
     """Test part 1 with first example."""
     test_file = Path(__file__).parent / "test1.txt"
     data = read_input(test_file)
     expected = 0  # TODO: Update with expected output
     result = part1(data)
     assert result == expected, f"Expected {expected}, got {result}"
-    print(f"✓ Part 1 Example 1: {result}")
+    print(f"✓ Part 1: {result}")
 
 
-def test_part1_example2():
-    """Test part 1 with second example."""
-    test_file = Path(__file__).parent / "test2.txt"
-    data = read_input(test_file)
-    expected = 0  # TODO: Update with expected output
-    result = part1(data)
-    assert result == expected, f"Expected {expected}, got {result}"
-    print(f"✓ Part 1 Example 2: {result}")
-
-
-def test_part2_example1():
+def test_part2():
     """Test part 2 with first example."""
     test_file = Path(__file__).parent / "test1.txt"
     data = read_input(test_file)
     expected = 0  # TODO: Update with expected output
     result = part2(data)
     assert result == expected, f"Expected {expected}, got {result}"
-    print(f"✓ Part 2 Example 1: {result}")
-
-
-def test_part2_example2():
-    """Test part 2 with second example."""
-    test_file = Path(__file__).parent / "test2.txt"
-    data = read_input(test_file)
-    expected = 0  # TODO: Update with expected output
-    result = part2(data)
-    assert result == expected, f"Expected {expected}, got {result}"
-    print(f"✓ Part 2 Example 2: {result}")
+    print(f"✓ Part 2: {result}")
 
 
 def run_all_tests():
     """Run all tests."""
     tests = [
-        ("Part 1 Example 1", test_part1_example1),
-        ("Part 1 Example 2", test_part1_example2),
-        ("Part 2 Example 1", test_part2_example1),
-        ("Part 2 Example 2", test_part2_example2),
+        ("Part 1 Example 1", test_part1),
+        ("Part 2 Example 1", test_part2),
     ]
 
     print("Running tests...\n")
