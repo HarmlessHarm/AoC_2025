@@ -2,10 +2,10 @@
 
 from pathlib import Path
 
-from utils import read_input
+from utils import read_input_lines
 
 
-def part1(data: str) -> int:
+def part1(data: list[str]) -> int:
     """Solve part 1 of the puzzle.
 
     Args:
@@ -18,7 +18,7 @@ def part1(data: str) -> int:
     return 0
 
 
-def part2(data: str) -> int:
+def part2(data: list[str]) -> int:
     """Solve part 2 of the puzzle.
 
     Args:
@@ -34,7 +34,7 @@ def part2(data: str) -> int:
 def main():
     """Run the solution on the actual input."""
     input_file = Path(__file__).parent / "input.txt"
-    data = read_input(input_file)
+    data = read_input_lines(input_file)
 
     print(f"Part 1: {part1(data)}")
     print(f"Part 2: {part2(data)}")
