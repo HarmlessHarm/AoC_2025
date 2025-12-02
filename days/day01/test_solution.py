@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 from utils import read_input_lines
-from solution import part1, part2
+from .solution import part1, part2
 
 
 def test_part1():
@@ -45,6 +45,7 @@ def run_all_tests():
     tests = [
         ("Part 1 Example 1", test_part1),
         ("Part 2 Example 1", test_part2),
+        ("Part 2 Example 2", test_part2_additional),
     ]
 
     print("Running tests...\n")

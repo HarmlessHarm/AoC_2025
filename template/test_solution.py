@@ -3,14 +3,14 @@
 import sys
 from pathlib import Path
 
-from utils import read_input
-from solution import part1, part2
+from utils import read_input_lines
+from .solution import part1, part2, data_loader
 
 
 def test_part1():
     """Test part 1 with first example."""
     test_file = Path(__file__).parent / "test1.txt"
-    data = read_input(test_file)
+    data = data_loader()(test_file)
     expected = 0  # TODO: Update with expected output
     result = part1(data)
     assert result == expected, f"Expected {expected}, got {result}"
@@ -20,7 +20,7 @@ def test_part1():
 def test_part2():
     """Test part 2 with first example."""
     test_file = Path(__file__).parent / "test1.txt"
-    data = read_input(test_file)
+    data = data_loader()(test_file)
     expected = 0  # TODO: Update with expected output
     result = part2(data)
     assert result == expected, f"Expected {expected}, got {result}"
