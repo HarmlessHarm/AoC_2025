@@ -3,15 +3,15 @@
 import sys
 from pathlib import Path
 
-from utils import read_input
+from utils import read_input_lines
 from solution import part1, part2
 
 
 def test_part1():
     """Test part 1 with first example."""
     test_file = Path(__file__).parent / "test1.txt"
-    data = read_input(test_file)
-    expected = 0  # TODO: Update with expected output
+    data = read_input_lines(test_file)
+    expected = 3
     result = part1(data)
     assert result == expected, f"Expected {expected}, got {result}"
     print(f"✓ Part 1: {result}")
@@ -20,11 +20,24 @@ def test_part1():
 def test_part2():
     """Test part 2 with first example."""
     test_file = Path(__file__).parent / "test1.txt"
-    data = read_input(test_file)
-    expected = 0  # TODO: Update with expected output
+    data = read_input_lines(test_file)
+    expected = 6
     result = part2(data)
     assert result == expected, f"Expected {expected}, got {result}"
     print(f"✓ Part 2: {result}")
+
+def test_part2_additional():
+    """Test part 2 with additional example."""
+    test_data = [
+        "R150",  # 50 -> 0 -> 0
+        "L250",  # 0 -> 0 -> 50
+        "R99",   # 50 -> 0 -> 49
+        "R1",    # 49 -> 50
+    ]
+    expected = 5  # Crossed zero 5 times
+    result = part2(test_data)
+    assert result == expected, f"Expected {expected}, got {result}"
+    print(f"✓ Part 2 Additional: {result}")
 
 
 def run_all_tests():
