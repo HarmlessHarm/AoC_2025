@@ -3,9 +3,9 @@
 from pathlib import Path
 import re
 
-from utils import read_input
+from utils import read_input, timeit
 
-
+@timeit
 def part1(data: str) -> int:
     """Solve part 1 of the puzzle.
 
@@ -28,7 +28,7 @@ def part1(data: str) -> int:
 
     return sum(invalid_ids)
 
-
+@timeit
 def part2(data: str) -> int:
     """Solve part 2 of the puzzle.
 
