@@ -1,4 +1,4 @@
-"""Tests for Advent of Code - Day XX"""
+"""Tests for Advent of Code - Day 03"""
 
 import sys
 from pathlib import Path
@@ -10,7 +10,7 @@ def test_part1():
     """Test part 1 with first example."""
     test_file = Path(__file__).parent / "test1.txt"
     data = data_loader()(test_file)
-    expected = 0  # TODO: Update with expected output
+    expected = 357
     result = part1(data)
     assert result == expected, f"Expected {expected}, got {result}"
     print(f"✓ Part 1 Example 1: {result}")
@@ -20,7 +20,7 @@ def test_part2():
     """Test part 2 with first example."""
     test_file = Path(__file__).parent / "test1.txt"
     data = data_loader()(test_file)
-    expected = 0  # TODO: Update with expected output
+    expected = 3121910778619
     result = part2(data)
     assert result == expected, f"Expected {expected}, got {result}"
     print(f"✓ Part 2 Example 1: {result}")
