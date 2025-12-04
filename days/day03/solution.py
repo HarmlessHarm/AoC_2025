@@ -7,6 +7,7 @@ from utils import read_input, read_input_lines
 
 READ_LINES = True  # Set to False to use read_input
 
+
 def part1(data: list[str] | str) -> int:
     """Solve part 1 of the puzzle.
 
