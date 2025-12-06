@@ -20,7 +20,7 @@ def test_part2():
     """Test part 2 with first example."""
     test_file = Path(__file__).parent / "test1.txt"
     data = data_loader()(test_file)
-    expected = 0  # TODO: Update with expected output
+    expected = 14  # TODO: Update with expected output
     result = part2(data)
     assert result == expected, f"Expected {expected}, got {result}"
     print(f"✓ Part 2 Example 1: {result}")
