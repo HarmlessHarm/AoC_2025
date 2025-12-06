@@ -1,5 +1,5 @@
-"""Advent of Code - Day 05 Solution"""
-import numpy as np
+"""Advent of Code - Day 06 Solution"""
+
 from pathlib import Path
 
 from utils import read_input, read_input_lines
@@ -15,13 +15,8 @@ def part1(data: list[str]) -> int:
     Returns:
         The solution to part 1
     """
-    _empty_line_index = data.index("")
-    ranges = data[:_empty_line_index]
-    ingredient_ids = data[_empty_line_index + 1:]
-
-    range_matrix = np.array([r.split('-') for r in ranges]).astype(int)
-    ingredient_matrix = np.array()
-    
+    # TODO: Implement part 1
+    return 0
 
 
 def part2(data: list[str]) -> int:
