@@ -1,9 +1,6 @@
 """Advent of Code - Day 07 Solution"""
 import numpy as np
 from pathlib import Path
-from typing import Self
-from queue import Queue
-from collections import defaultdict
 
 from utils import read_input, read_input_lines
 
@@ -12,29 +9,6 @@ READ_LINES = True  # Set to False to use read_input
 
 def line_to_splitters(line: str) -> np.array:
     return np.array([0 if c == "." else 1 for c in line])
-    
-
-class TachyonLayer():
-    incoming_beams: np.array
-    splitters: np.array
-    hit_splitters: np.array
-    continueing_beams: np.array
-    def __init__(self, incoming_beams: list[int], splitters: list[int]):
-        self.incoming_beams = np.array(incoming_beams)
-        self.splitters = np.array(splitters)
-
-    def get_output_beams(self) -> np.array:
-        self.hit_splitters = self.incoming_beams & self.splitters
-        self.continueing_beams = self.incoming_beams & ~self.splitters
-        return self.split_beams() | self.continueing_beams
-
-    def split_beams(self) -> np.array:
-        left_split = np.delete(np.append(self.hit_splitters, 0), 0) # remove first index, append 0
-        right_split = np.delete(np.insert(self.hit_splitters, 0, 0), -1) # remove last index, insert 0
-        return left_split | right_split
-    
-    def count_hit_splitters(self) -> int:
-        return sum(self.hit_splitters)
 
 
 
@@ -48,21 +22,29 @@ def part1(data: list[str]) -> int:
         The solution to part 1
     """
     first_line, data = data[0], data[1:]
-    tachyonManifold: list[TachyonLayer] = []
 
-    first_layer_input = line_to_splitters(first_line)
+    # Initialize beams from first line (1 where there's a non-dot character)
+    beams = np.array([1 if c != "." else 0 for c in first_line])
+    total_hits = 0
 
-    no_splitters = np.array([0] * len(first_layer_input))
-    layer = TachyonLayer(first_layer_input, no_splitters)
-    output_beams = layer.get_output_beams()
-    tachyonManifold.append(layer)
     for line in data:
         splitters = line_to_splitters(line)
-        layer = TachyonLayer(output_beams, splitters)
-        output_beams = layer.get_output_beams()
-        tachyonManifold.append(layer)
 
-    return sum([layer.count_hit_splitters() for layer in tachyonManifold])
+        # Count splitters hit by beams
+        hit_splitters = beams & splitters
+        total_hits += np.sum(hit_splitters)
+
+        # Beams that hit splitters split left and right
+        left_split = np.append(hit_splitters[1:], 0)
+        right_split = np.insert(hit_splitters[:-1], 0, 0)
+
+        # Beams that don't hit splitters continue straight
+        continuing_beams = beams & ~splitters
+
+        # Update beams for next layer
+        beams = (left_split | right_split | continuing_beams)
+
+    return total_hits
 
 
 def part2(data: list[str]) -> int:
